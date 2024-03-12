@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Student>
+	<firstName type="String">Francesco</firstName>
+	<surname type="String">Benocci</surname>
+	<age type="int">23</age>
+</Student>
+<Student>
+	<firstName type="String">Jane</firstName>
+	<surname type="String">Doe</surname>
+	<age type="int">42</age>
+</Student>
+<notXMLable />
+<Professor>
+	<firstName type="String">Mario</firstName>
+	<surname type="String">Rossi</surname>
+	<id type="char">c</id>
+	<isAbsent type="boolean">true</isAbsent>
+</Professor>
