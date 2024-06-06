@@ -1,0 +1,12 @@
+{
+   "fun": "example",
+   "args": [
+      10,
+      6
+   ],
+   "n_threads": 2,
+   "seq_iter": 8,
+   "iter": 5,
+   "mean": 0.0788430104003055,
+   "variance": 7.893342362997044e-07
+}
