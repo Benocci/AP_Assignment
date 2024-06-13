@@ -11,6 +11,6 @@ package com.mycompany.assignment1ex1;
 public class Assignment1Ex1 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        EightBoard.main(args);
     }
 }

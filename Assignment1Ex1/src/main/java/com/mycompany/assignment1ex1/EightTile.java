@@ -147,6 +147,7 @@ public class EightTile extends JButton implements Serializable, PropertyChangeLi
             System.out.println("ERROR: get a wrong property event (" + pce.getPropertyName() + ")");
             return;
         }
+        //System.out.println("PROVA");
         
         // If the event indicates a restart, update the tile's label with the new permutation provided in the event.
         ArrayList<Integer> permutation = (ArrayList<Integer>) pce.getNewValue();
