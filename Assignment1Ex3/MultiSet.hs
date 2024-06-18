@@ -63,6 +63,12 @@ union (MS xs) (MS ys) = foldl (\acc (x,n) -> addSpec acc x n) (MS xs) ys
             | v == y = (y, m' + n):ys
             | otherwise = (y, m'):addSpecToSet ys v n
 
--- Mapping a fucntion over the elements of a multiset
+-- Mapping a function over the elements of a multiset
 mapMSet :: (a -> b) -> MSet a -> MSet b
 mapMSet f (MS xs) = MS (map (\(x, n) -> (f x, n)) xs)
+-- It is not possible to define an instance of Functor for MSet by providing
+-- mapMSet as the implementation of fmap because the Functor laws would not be
+-- satisfied. Functor laws require that fmap id = id and fmap (f . g) = fmap f . fmap g.
+-- The second law (composition) would not hold in this case because MSet does not support the notion
+-- of combining elements. Applying a function to the elements of an MSet can change
+-- the multiplicities and the structure in a way that violates Functor laws.
