@@ -4,7 +4,7 @@ import threading
 import statistics
 import json
 
-def bench(n_threads=1, seq_iter=1,iter=1):
+def bench(n_threads=1,seq_iter=1,iter=1):
     exec_times = []
     def decorator(func):
         @functools.wraps(func)
@@ -44,7 +44,7 @@ def bench(n_threads=1, seq_iter=1,iter=1):
     return decorator
 
 
-def test(iter, fun, args):
+def test(fun, args, iter):
     
     def write_to_file(n_threads,seq_iter,iter):
         res = bench(n_threads=n_threads,seq_iter=seq_iter,iter=iter)(fun)(*args)
