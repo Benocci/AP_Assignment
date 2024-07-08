@@ -95,5 +95,6 @@ mapMSet2 f (MS xs) = foldl (\acc (x, n) -> addSpec acc (f x) n) empty xs
 -- satisfied. If f maps two distinct elements to the same element, the multiplicities
 -- would need to be combined, and this violates the principle that fmap should treat
 -- elements independently and preserve structure.
+-- By definition in the Functor:
 -- The mapping operation by itself does not modify the values in the functor, only the
 -- function. The structure of the functor remains unchanged and only the values are modified.
