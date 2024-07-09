@@ -7,8 +7,7 @@ module MultiSet (
     elems,
     subeq,
     union,
-    mapMSet,
-    mapMSet2
+    mapMSet
     ) where
 
 -- Definition of the MSet type constructor
@@ -66,22 +65,9 @@ union (MS xs) (MS ys) = foldl (\acc (x,n) -> addSpec acc x n) (MS xs) ys
             | v == y = (y, m' + n):ys
             | otherwise = (y, m'):addSpecToSet ys v n
 
--- Mapping a function over the elements of a multiset
-mapMSet :: (a -> b) -> MSet a -> MSet b
-mapMSet f (MS xs) = MS (map (\(x, n) -> (f x, n)) xs)
-
--- It is not possible to define an instance of Functor for MSet by providing
--- mapMSet as the implementation of fmap because the Functor laws would not be
--- satisfied. Functor laws require that fmap id = id and fmap (f . g) = fmap f . fmap g.
--- The second law (composition) would not hold in this case because MSet does not support the notion
--- of combining elements. Applying a function to the elements of an MSet can change
--- the multiplicities and the structure in a way that violates Functor laws.
-
-
-
 -- Mapping a function over the elements of a multiset (new version)
-mapMSet2 :: (Eq b) => (a -> b) -> MSet a -> MSet b
-mapMSet2 f (MS xs) = foldl (\acc (x, n) -> addSpec acc (f x) n) empty xs
+mapMSet :: (Eq b) => (a -> b) -> MSet a -> MSet b
+mapMSet f (MS xs) = foldl (\acc (x, n) -> addSpec acc (f x) n) empty xs
     where
         -- Helper function to add element with a specified occurrences to a multiset
         addSpec (MS mset) v n = MS (addToSet mset v n)
@@ -98,3 +84,4 @@ mapMSet2 f (MS xs) = foldl (\acc (x, n) -> addSpec acc (f x) n) empty xs
 -- By definition in the Functor:
 -- The mapping operation by itself does not modify the values in the functor, only the
 -- function. The structure of the functor remains unchanged and only the values are modified.
+-- In the implementation fmap don't have (Eq b)
